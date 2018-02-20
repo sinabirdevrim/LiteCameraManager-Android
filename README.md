@@ -6,7 +6,14 @@ Basic camera libary
 
 ### Manifest File ###
 ```
-<provider
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+   <application
+       android:allowBackup="true"
+	...
+	<provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
@@ -15,6 +22,7 @@ Basic camera libary
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_provider_paths" />
         </provider>
+   </application>
 ```
 ### Gradle ###
 ```
