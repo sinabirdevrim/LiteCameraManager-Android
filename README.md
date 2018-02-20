@@ -24,6 +24,8 @@ Basic camera libary
         </provider>
    </application>
 ```
+**don't forget runtime permission**
+
 ### Gradle ###
 ```
 allprojects {
