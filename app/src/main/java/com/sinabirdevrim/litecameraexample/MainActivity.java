@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     // do you work now
                     liteCameraManager.takePicture(count + "_Photo");
                 }
-                liteCameraManager.takePicture(count + "_Photo");
+                //liteCameraManager.takePicture(count + "_Photo");
                 // check for permanent denial of any permission
                 if (report.isAnyPermissionPermanentlyDenied()) {
                     // permission is denied permenantly, navigate user to app settings

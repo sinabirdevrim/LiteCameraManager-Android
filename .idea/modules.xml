@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LiteCameraManager-Android.iml" filepath="$PROJECT_DIR$/LiteCameraManager-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/LiteCameraManager-Android.iml" filepath="$PROJECT_DIR$/.idea/LiteCameraManager-Android.iml" />
+      <module fileurl="file://C:\Users\Ahmet\Documents\Android_Libary\LiteCameraManager-Android\LiteCameraManager-Android.iml" filepath="C:\Users\Ahmet\Documents\Android_Libary\LiteCameraManager-Android\LiteCameraManager-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Ahmet\Documents\Android_Libary\LiteCameraManager-Android\app\app.iml" filepath="C:\Users\Ahmet\Documents\Android_Libary\LiteCameraManager-Android\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/litecamaramanager/litecamaramanager.iml" filepath="$PROJECT_DIR$/litecamaramanager/litecamaramanager.iml" />
+      <module fileurl="file://C:\Users\Ahmet\Documents\Android_Libary\LiteCameraManager-Android\litecamaramanager\litecamaramanager.iml" filepath="C:\Users\Ahmet\Documents\Android_Libary\LiteCameraManager-Android\litecamaramanager\litecamaramanager.iml" />
     </modules>
   </component>
 </project>

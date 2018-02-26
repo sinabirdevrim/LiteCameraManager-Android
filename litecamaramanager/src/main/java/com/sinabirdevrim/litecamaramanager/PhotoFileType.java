@@ -1,7 +1,7 @@
 package com.sinabirdevrim.litecamaramanager;
 
 /**
- * Created by 02484252 on 16.02.2018.
+ * Created by Ahmet Sina on 16.02.2018.
  */
 
 public enum PhotoFileType {
