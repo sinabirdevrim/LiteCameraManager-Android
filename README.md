@@ -2,7 +2,7 @@
 
 **Camera Helper Lib**
 
-Basic camera libary 
+This camera library is work on api level 24 up and down.
 
 ### Manifest File ###
 ```
@@ -42,7 +42,7 @@ allprojects {
 ### Using ###
 
 ~~~~
-LiteCameraManager   liteCameraManager = new LiteCameraManager(this, "Test", PhotoFileType.JPEG);
+LiteCameraManager liteCameraManager = new LiteCameraManager(this, "Test", PhotoFileType.JPEG);
 liteCameraManager.takePicture("Photo Name");
 
 
