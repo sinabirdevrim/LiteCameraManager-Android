@@ -36,7 +36,7 @@ allprojects {
 	}
   
  dependencies {
-	        compile 'com.github.sinabirdevrim:LiteCameraManager-Android:0.1.1'
+	        compile 'com.github.sinabirdevrim:LiteCameraManager-Android:0.2.0'
 	}
 ```
 ### Using ###
@@ -48,7 +48,7 @@ liteCameraManager.takePicture("Photo Name");
 
   @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == liteCameraManager.PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == LiteCameraManager.PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             imgPhoto.setImageBitmap(liteCameraManager.getImage());
         }
 
