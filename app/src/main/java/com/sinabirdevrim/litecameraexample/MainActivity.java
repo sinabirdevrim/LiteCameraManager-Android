@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imgPhoto = (ImageView) findViewById(R.id.imgPhoto);
-        liteCameraManager = new LiteCameraManager(this, "Test", PhotoFileType.JPEG);
+        liteCameraManager = new LiteCameraManager(this, "Test1", PhotoFileType.JPEG);
         Dexter.withActivity(this).withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA).withListener(new MultiplePermissionsListener() {
             @Override

@@ -51,21 +51,26 @@ public class LiteCameraManager {
         setting = new Setting();
     }
 
+    private File getFile(String picName) {
+        File photoFile = null;
+        try {
+            photoFile = createImageFile(picName, setting.isCreateImageFileTemp());
+        } catch (IOException ex) {
+            Log.e("LiteCameraManager:", ex.getMessage());
+        }
+        return photoFile;
+    }
+
     public void takePicture(String picName) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(context.getPackageManager()) != null) {
             Uri photoURI = null;
-            try {
-                File photoFile = createImageFileWith(picName);
-                uri = Uri.fromFile(photoFile);
-                path = photoFile.getAbsolutePath();
-                photoURI = FileProvider.getUriForFile(context,
-                        authoritiesName,
-                        photoFile);
-
-            } catch (IOException ex) {
-                Log.e("LiteCameraManager:", ex.getMessage());
-            }
+            File photoFile = getFile(picName);
+            uri = Uri.fromFile(photoFile);
+            path = photoFile.getAbsolutePath();
+            photoURI = FileProvider.getUriForFile(context,
+                    authoritiesName,
+                    photoFile);
             if (Build.VERSION.SDK_INT <= 21) {
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
             } else {
@@ -79,12 +84,18 @@ public class LiteCameraManager {
         }
     }
 
-    private File createImageFileWith(String picName) throws IOException {
+    private File createImageFile(String picName, boolean isCreateTempFile) throws IOException {
         final String imageFileName = picName;
         File storageDir = getFileStorageDir(fileName);
         storageDir.mkdirs();
-        return File.createTempFile(imageFileName, photoFileType.getValue(), storageDir);
+        if (isCreateTempFile) {
+            return File.createTempFile(imageFileName, photoFileType.getValue(), storageDir);
+        } else {
+            return new File(storageDir, imageFileName + photoFileType.getValue());
+        }
+
     }
+
 
     private File getFileStorageDir(String fileName) {
         File storageDir;
