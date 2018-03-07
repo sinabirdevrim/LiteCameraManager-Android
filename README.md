@@ -36,7 +36,7 @@ allprojects {
 	}
   
  dependencies {
-	        compile 'com.github.sinabirdevrim:LiteCameraManager-Android:0.2.0'
+	        compile 'com.github.sinabirdevrim:LiteCameraManager-Android:0.3.0'
 	}
 ```
 ### Using ###
