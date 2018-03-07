@@ -63,3 +63,7 @@ cameraManager.getImageFilePath()
 ~~~~
 CameraManager.bitmapToBase64ForPath(photoInfo.getPhotoPath(), 160)
 ~~~~
+### Rotation Photo ###
+~~~~
+liteCameraManager.getImage(true)
+~~~~
