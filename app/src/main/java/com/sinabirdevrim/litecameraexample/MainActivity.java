@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == liteCameraManager.PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            imgPhoto.setImageBitmap(liteCameraManager.getImage());
+            imgPhoto.setImageBitmap(liteCameraManager.getImage(true));
         }
 
     }

@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -134,10 +137,20 @@ public class LiteCameraManager {
     }
 
     public Bitmap getImage() {
+        return getImage(false);
+    }
+
+    public Bitmap getImage(boolean isRotate) {
+        Bitmap photo = null;
         Uri imageUri = Uri.parse(path);
         File file = new File(imageUri.getPath());
         final Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
-        return getResizedBitmapLessThanMaxSize(bitmap, setting.getMaxSize());
+        if (isRotate) {
+            photo = rotateImage(getResizedBitmapLessThanMaxSize(bitmap, setting.getMaxSize()), getImageFilePath());
+        } else {
+            photo = getResizedBitmapLessThanMaxSize(bitmap, setting.getMaxSize());
+        }
+        return photo;
     }
 
     public String getImageFilePath() {
@@ -146,6 +159,35 @@ public class LiteCameraManager {
         return file.getPath();
     }
 
+    private static Bitmap rotateImage(Bitmap img, String imgPath) {
+
+        ExifInterface ei = null;
+        try {
+            ei = new ExifInterface(imgPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+        switch (orientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return rotateImage(img, 90);
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return rotateImage(img, 180);
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return rotateImage(img, 270);
+            default:
+                return img;
+        }
+    }
+
+    private static Bitmap rotateImage(Bitmap img, int degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+        img.recycle();
+        return rotatedImg;
+    }
 
     public static String bitmapToBase64ForPath(String path, int maxSize, int quality, Bitmap.CompressFormat compressFormat) {
 
